@@ -12,7 +12,7 @@ RUN yum install -y nodejs \
 WORKDIR /root/myfirstvue
 
 #install vue-cli version 3
-#RUN npm install -g @vue/cli
+RUN npm install -g @vue/cli
 
 EXPOSE 9000:8080
 
