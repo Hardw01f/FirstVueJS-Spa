@@ -8,6 +8,12 @@
   </div>
 </template>
 
+<script >
+import About from './views/About.vue'
+
+</script>
+
+
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
