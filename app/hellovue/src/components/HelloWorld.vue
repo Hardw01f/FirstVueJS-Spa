@@ -25,7 +25,6 @@ function GetRealtime(){
 
 
 
-import axios from 'axios'
 export default {
   name: 'HelloWorld',
   data () {
@@ -33,33 +32,13 @@ export default {
     msg : GetRealtime(), 
     }
   },
-  methods: {
-    apiPublic: async function () {
-      let res = await axios.get('http://127.0.0.1:8000/public')
-      this.msg = res.data
-    },
-    apiPrivate: async function () {
-      let res = await axios.get('http://127.0.0.1:8000/private')
-      this.msg = res.data
-    },
-    getNowtime: async function () {
-      let res = await axios.get('http://localhost:8000/nowtime')
-      this.msg = res.data
-	},
-	startInterval : function () {
-      var self = this;
-      setInterval(function(){
-            self.msg = GetRealtime()
-            },1000);
-    },
+  methods:{
   },
-  mounted: {
-	function () {
+  mounted: function () {
           setInterval(() => {
               this.msg = GetRealtime()
           },1000);
-      }
-  }
+  },
 }
 
 
