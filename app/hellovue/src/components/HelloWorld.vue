@@ -3,6 +3,7 @@
     <h1 id="time" :class="msg">{{ msg }}</h1>
 	<h3 id="todayweek">{{ todayweek }}</h3>
 	<h3 id="nextdayweek">Tomorrow : {{ nextdayweek }}</h3>
+	<h4 id="garbage">Tomorrow Garbage : {{ garbage }}</h4> 
     <!-- <button @click="apiPublic">public</button>
     <button @click="apiPrivate">private</button>
 	<button @click="getNowtime">nowtime</button> -->
@@ -44,6 +45,19 @@ function GettommorwWeek() {
 		return weeks[nowweek + 1]
 }
 
+function WeekGarbage(tomorrow) {
+        if ( tomorrow == "Monday" ) {
+            return '燃えるゴミ'
+        } else if ( tomorrow == "Tuesday" ) {
+            return '燃やさないゴミ'
+		} else if ( tomorrow == "Wednesday" ) {
+            return '紙＆ダンボールゴミ、布ごみ'
+        } else if ( tomorrow == "Thursday" ) {
+            return '燃やすゴミ、ペットボトル、カン、ビン'
+        } else {
+            return 'Nothing'
+		}
+}
 
 export default {
   name: 'HelloWorld',
@@ -51,7 +65,8 @@ export default {
     return {
     msg : GetRealtime(), 
     todayweek : Getnowweek(),
-    nextdayweek : GettommorwWeek()
+    nextdayweek : GettommorwWeek(),
+    garbage : 0
     }
   },
   methods:{
@@ -59,7 +74,8 @@ export default {
   mounted() {
           setInterval(() => this.msg = GetRealtime(),1000);
           setInterval(() => this.todayweek = Getnowweek(),1000);
-          setInterval(() => this.nextdayweek = GettommorwWeek(),360000);
+          setInterval(() => this.nextdayweek = GettommorwWeek(),60000);
+          setInterval(() => this.garbage = WeekGarbage(this.nextdayweek),1000);
   },
 }
 
@@ -82,6 +98,10 @@ h1, h2 {
 
 #nextdayweek {
 		font-size: 200%;
+}
+
+#garbage {
+		font-size: 100%;
 }
 
 ul {
