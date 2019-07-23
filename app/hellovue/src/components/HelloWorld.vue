@@ -1,20 +1,36 @@
 <template>
   <div class='hello'>
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <button @click="apiPublic">public</button>
+    <h1 id="time" :class="msg">{{ msg }}</h1>
+	<h2>{{ msg }}</h2>
+    <!-- <button @click="apiPublic">public</button>
     <button @click="apiPrivate">private</button>
-	<button @click="getNowtime">nowtime</button>
+	<button @click="getNowtime">nowtime</button> -->
   </div>
 </template>
 
 <script>
+
+function GetRealtime(){
+            var now = new Date();
+			var year = now.getFullYear();
+			var month = now.getMonth();
+			var nowdate = now.getDate(); // 日
+            var hour = now.getHours(); // 時
+            var min  = now.getMinutes(); // 分
+            var sec  = now.getSeconds(); 
+            var msg = year + "/" + month + "/" + nowdate + "  " + hour + ":" + min + ":" + sec;
+            return msg
+            //document.getElementById("realtime").innerHTML = msg;
+}
+
+
+
 import axios from 'axios'
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+    msg : GetRealtime(), 
     }
   },
   methods: {
@@ -29,9 +45,24 @@ export default {
     getNowtime: async function () {
       let res = await axios.get('http://localhost:8000/nowtime')
       this.msg = res.data
-	}
+	},
+	startInterval : function () {
+      var self = this;
+      setInterval(function(){
+            self.msg = GetRealtime()
+            },1000);
+    },
+  },
+  mounted: {
+	function () {
+          setInterval(() => {
+              this.msg = GetRealtime()
+          },1000);
+      }
   }
 }
+
+
 
 </script>
 
@@ -40,6 +71,10 @@ export default {
 h1, h2 {
   font-weight: normal;
 }
+#time {
+		font-size: 400%;
+}
+
 ul {
   list-style-type: none;
   padding: 0;
