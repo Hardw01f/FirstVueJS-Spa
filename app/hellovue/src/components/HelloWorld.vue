@@ -2,7 +2,7 @@
   <div class='hello'>
     <h1 id="time" :class="msg">{{ msg }}</h1>
 	<h3 id="todayweek">{{ todayweek }}</h3>
-	<h3 id="nextdayweek">Tommorw : {{ nextdayweek }}</h3>
+	<h3 id="nextdayweek">Tomorrow : {{ nextdayweek }}</h3>
     <!-- <button @click="apiPublic">public</button>
     <button @click="apiPrivate">private</button>
 	<button @click="getNowtime">nowtime</button> -->
@@ -15,13 +15,19 @@ function GetRealtime(){
             var now = new Date();
 			var year = now.getFullYear();
 			var month = now.getMonth();
-			var nowdate = now.getDate(); // 日
-            var hour = now.getHours(); // 時
-            var min  = now.getMinutes(); // 分
-            var sec  = now.getSeconds(); 
+            if ( month < 10 ) month = '0' + month;	
+			var nowdate = AddDigital(now.getDate());
+            var hour = AddDigital(now.getHours());
+            var min  = AddDigital(now.getMinutes());
+            var sec  = AddDigital(now.getSeconds());
             var msg = year + "/" + month + "/" + nowdate + "  " + hour + ":" + min + ":" + sec;
             return msg
             //document.getElementById("realtime").innerHTML = msg;
+}
+
+function AddDigital(args){
+		if( args < 10 ) args = '0' + args
+        return args
 }
 
 var weeks = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
@@ -53,6 +59,7 @@ export default {
   mounted() {
           setInterval(() => this.msg = GetRealtime(),1000);
           setInterval(() => this.todayweek = Getnowweek(),1000);
+          setInterval(() => this.nextdayweek = GettommorwWeek(),360000);
   },
 }
 
