@@ -1,7 +1,8 @@
 <template>
   <div class='hello'>
     <h1 id="time" :class="msg">{{ msg }}</h1>
-	<h2>{{ msg }}</h2>
+	<h3 id="todayweek">{{ todayweek }}</h3>
+	<h3 id="nextdayweek">Tommorw : {{ nextdayweek }}</h3>
     <!-- <button @click="apiPublic">public</button>
     <button @click="apiPrivate">private</button>
 	<button @click="getNowtime">nowtime</button> -->
@@ -23,6 +24,19 @@ function GetRealtime(){
             //document.getElementById("realtime").innerHTML = msg;
 }
 
+var weeks = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+
+function Getnowweek() {
+		var now = new Date();
+		var nowweek = now.getDay();
+		return weeks[nowweek]
+}
+
+function GettommorwWeek() {
+		var now = new Date();
+		var nowweek = now.getDay();
+		return weeks[nowweek + 1]
+}
 
 
 export default {
@@ -30,12 +44,15 @@ export default {
   data () {
     return {
     msg : GetRealtime(), 
+    todayweek : Getnowweek(),
+    nextdayweek : GettommorwWeek()
     }
   },
   methods:{
   },
   mounted() {
           setInterval(() => this.msg = GetRealtime(),1000);
+          setInterval(() => this.todayweek = Getnowweek(),1000);
   },
 }
 
@@ -49,7 +66,15 @@ h1, h2 {
   font-weight: normal;
 }
 #time {
-		font-size: 400%;
+		font-size: 600%;
+}
+
+#todayweek {
+        font-size: 400%;
+}
+
+#nextdayweek {
+		font-size: 200%;
 }
 
 ul {
