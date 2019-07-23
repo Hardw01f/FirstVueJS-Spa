@@ -34,10 +34,8 @@ export default {
   },
   methods:{
   },
-  mounted: function () {
-          setInterval(() => {
-              this.msg = GetRealtime()
-          },1000);
+  mounted() {
+          setInterval(() => this.msg = GetRealtime(),1000);
   },
 }
 
