@@ -1,5 +1,5 @@
 <template>
-  <div class='hello'>
+  <div class='home'>
     <h1 id="time" :class="msg">{{ msg }}</h1>
 	<h3 id="todayweek">{{ todayweek }}</h3>
 	<h3 id="nextdayweek">Tomorrow : {{ nextdayweek }}</h3>
