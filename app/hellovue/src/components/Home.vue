@@ -42,7 +42,11 @@ function Getnowweek() {
 function GettommorwWeek() {
 		var now = new Date();
 		var nowweek = now.getDay();
-		return weeks[nowweek + 1]
+		if ( nowweek != 6 ){
+				return weeks[nowweek]
+		}else{
+				return weeks[0]
+		}
 }
 
 function WeekGarbage(tomorrow) {
