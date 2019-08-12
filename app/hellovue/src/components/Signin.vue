@@ -1,8 +1,8 @@
 <template>
-  <div class='signup'>
+  <div class='signin'>
       <h1>Hello</h1>
-      <h2>Welcome to Signup page</h2>
-      <input type="email" placeholder="Username" v-model="username">
+      <h2>Welcome to Signin page</h2>
+      <input type="email" placeholder="Username" v-model="username"><br>
       <input type="password" placeholder="Password" v-model="password">
   </div>
 </template>
@@ -10,7 +10,7 @@
 <script>
 
 export default {
-  name: 'Signup',
+  name: 'HelloWorld',
   data () {
     return {
     }
