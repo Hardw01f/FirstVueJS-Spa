@@ -4,18 +4,29 @@
       <h2>Welcome to Signup page</h2>
       <input type="email" placeholder="Username" v-model="username">
       <input type="password" placeholder="Password" v-model="password">
+      <button @click="signUp">Register</button>
   </div>
 </template>
 
 <script>
+import firebase from 'firebase'
 
 export default {
   name: 'Signup',
   data () {
     return {
+        username: '',
+        password: ''
     }
   },
   methods:{
+    signUp: function(){
+        firebase.auth().createUserWithEmailAndPassword(this.username, this.password).then(user => {
+            alert('Create account: ',user.email)
+        }).catch(error => {
+            alert(error.message)
+        })
+    }
   },
 }
 
