@@ -1,32 +1,49 @@
-
 <template>
-  <div class="signup">
-    <h2>Sign up</h2>
-    <input type="text" placeholder="Username" v-model="email">
-    <input type="password" placeholder="Password" v-model="password">
-    <button>Register</button>
-    <p>Do you have an account?
-      <router-link to="/signin">sign in now!!</router-link>
-    </p>
+  <div class='signup'>
+      <h1>Hello</h1>
+      <h2>Welcome to Signup page</h2>
+      <input type="email" placeholder="Username" v-model="username">
+      <input type="password" placeholder="Password" v-model="password">
   </div>
 </template>
 
 <script>
-		export default {
-				name: 'signup',
-				data (){
-						return {
-								email: '',
-								password: ''
-						}
-				}
-		}
+
+export default {
+  name: 'Signup',
+  data () {
+    return {
+    }
+  },
+  methods:{
+  },
+}
+
+
+
 </script>
 
+<!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style scoped>
 h1, h2 {
   font-weight: normal;
 }
+#time {
+		font-size: 600%;
+}
+
+#todayweek {
+        font-size: 400%;
+}
+
+#nextdayweek {
+		font-size: 200%;
+}
+
+#garbage {
+		font-size: 100%;
+}
+
 ul {
   list-style-type: none;
   padding: 0;
@@ -38,19 +55,24 @@ li {
 a {
   color: #42b983;
 }
-.signup {
-  margin-top: 20px;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center
-}
-input {
-  margin: 10px 0;
-  padding: 10px;
-}
 button {
   margin: 10px 0;
   padding: 10px;
 }
+
+
+.signup {
+  margin-top: 20px;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center
+} 
+
+input {
+  margin: 5px 0;
+  padding: 10px;
+}
+
 </style>
