@@ -1,6 +1,9 @@
 <template>
   <div class='signin'>
-      <h1>test</h1>
+      <h1>Hello</h1>
+      <h2>Welcome to Signin page</h2>
+      <input type="email" placeholder="Username" v-model="username"><br>
+      <input type="password" placeholder="Password" v-model="password">
   </div>
 </template>
 
@@ -56,4 +59,20 @@ button {
   margin: 10px 0;
   padding: 10px;
 }
+
+
+.signup {
+  margin-top: 20px;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center
+} 
+
+input {
+  margin: 5px 0;
+  padding: 10px;
+}
+
 </style>
