@@ -43,7 +43,7 @@ function GettommorwWeek() {
 		var now = new Date();
 		var nowweek = now.getDay();
 		if ( nowweek != 6 ){
-				return weeks[nowweek]
+				return weeks[nowweek + 1]
 		}else{
 				return weeks[0]
 		}
@@ -78,7 +78,7 @@ export default {
   mounted() {
           setInterval(() => this.msg = GetRealtime(),1000);
           setInterval(() => this.todayweek = Getnowweek(),1000);
-          setInterval(() => this.nextdayweek = GettommorwWeek(),60000);
+          setInterval(() => this.nextdayweek = GettommorwWeek(),1000);
           setInterval(() => this.garbage = WeekGarbage(this.nextdayweek),1000);
   },
 }
