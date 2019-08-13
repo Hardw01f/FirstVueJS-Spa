@@ -23,7 +23,7 @@ export default {
     }
   },
   methods:{
-        signOut: window.onload = function () {
+        signOut: function () {
 			firebase.auth().onAuthStateChanged((user) => {
                 firebase.auth().signOut().then(() =>{
                     alert(user + ' : logout');

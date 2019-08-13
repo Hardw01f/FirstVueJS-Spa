@@ -37,7 +37,6 @@ let router = new Router({
     {
       path: '/signout',
       name: 'signout',
-      component: () => import('./views/Signout.vue'),
       meta: { requiresAuth: true }
     }
   ]
