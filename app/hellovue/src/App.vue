@@ -24,9 +24,10 @@ export default {
   },
   methods:{
         signOut: function () {
-			firebase.auth().onAuthStateChanged((user) => {
+			firebase.auth().onAuthStateChanged(() => {
                 firebase.auth().signOut().then(() =>{
-                    alert(user + ' : logout');
+                    console.log('signouted!')
+                    alert('logout');
                     this.$router.push('/signin');
                 }).catch( (error)=>{
                     alert(error + ' : occur logout error');
