@@ -4,13 +4,42 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/shopping">Shopping-Lists</router-link> |
       <router-link to="/signin">Signin</router-link> |
-      <router-link to="/signup">Signup</router-link>
+      <router-link to="/signup">Signup</router-link> |
+      <button @click="signOut">Signout</button>
 
     </div>
     <router-view/>
   </div>
 </template>
 
+
+<script>
+import firebase from 'firebase'
+
+export default {
+  name: 'Signout',
+  data () {
+    return {
+    }
+  },
+  methods:{
+        signOut: window.onload = function () {
+			firebase.auth().onAuthStateChanged((user) => {
+                firebase.auth().signOut().then(() =>{
+                    alert(user + ' : logout');
+                    this.$router.push('/signin');
+                }).catch( (error)=>{
+                    alert(error + ' : occur logout error');
+                });
+			})
+    }
+
+  }
+}
+
+
+
+</script>
 
 
 <style>
