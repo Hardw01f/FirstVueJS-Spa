@@ -34,6 +34,8 @@ export default new Router({
     {
       path: '/signout',
       name: 'signout',
+      component: () => import('./components/Signout.vue')
     }
   ]
+
 })
