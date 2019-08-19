@@ -5,42 +5,13 @@
       <router-link to="/shopping">Shopping-Lists</router-link> |
       <router-link to="/signin">Signin</router-link> |
       <router-link to="/signup">Signup</router-link> |
-      <button @click="signOut">Signout</button>
+      <!-- <Signout @click="signOut">Signout</Signout> -->
+      <router-link to="/signOut">Signout</router-link>
 
     </div>
     <router-view/>
   </div>
 </template>
-
-
-<script>
-import firebase from 'firebase'
-
-export default {
-  name: 'Signout',
-  data () {
-    return {
-    }
-  },
-  methods:{
-        signOut: function () {
-			firebase.auth().onAuthStateChanged(() => {
-                firebase.auth().signOut().then(() =>{
-                    console.log('signouted!')
-                    alert('logout');
-                    this.$router.push('/signin');
-                }).catch( (error)=>{
-                    alert(error + ' : occur logout error');
-                });
-			})
-    }
-
-  }
-}
-
-
-
-</script>
 
 
 <style>

@@ -1,6 +1,7 @@
 <template>
     <div class="signout">
       <h1>Logouted !!!</h1>
+      <button class="btn-square-shadow" style="width:200px;height:75px" @click="signOut">SignOut!</button>
     </div>
 </template>
 
@@ -8,27 +9,26 @@
 import firebase from 'firebase'
 
 export default {
-  name: 'Signout',
-  data () {
-    return {
+    name: "signout",
+    data () {
+        return {
+      }
+    },
+    methods: {
+         signOut: function () {
+             //this.$emit("signOut");
+             firebase.auth().onAuthStateChanged((user) => {
+                 firebase.auth().signOut().then(() => {
+                     alert(user + ' : logout');
+                     this.$router.push('/signin');
+                     console.log('logouted');
+             }).catch( (error)=>{
+                     alert( error + ' : occur logout errer');
+             });
+             })
+        }
     }
-  },
-  methods:{
-        signOut: function () {
-			firebase.auth().onAuthStateChanged((user) => {
-                firebase.auth().signOut().then(() =>{
-                    alert(user + ' : logout');
-                    this.$router.push('/signin');
-                }).catch( (error)=>{
-                    alert(error + ' : occur logout error');
-                });
-			})
-    }
-
-  }
 }
-
-
 
 </script>
 
@@ -84,5 +84,21 @@ input {
   padding: 10px;
 }
 
+		.btn-square-shadow {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #5EBA83;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+}
+.btn-square-shadow:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  border-bottom: none;
+}
 
 </style>

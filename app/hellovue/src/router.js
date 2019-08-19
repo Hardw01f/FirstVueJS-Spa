@@ -37,9 +37,11 @@ let router = new Router({
     {
       path: '/signout',
       name: 'signout',
+      component: () => import('./components/Signout.vue'),
       meta: { requiresAuth: true }
     }
   ]
+
 })
 
 router.beforeEach((to,from,next) => {
