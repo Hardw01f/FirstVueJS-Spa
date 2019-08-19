@@ -1,8 +1,9 @@
 <template>
-      <button @click="signOut">SignOut!</button>
+      <button class="btn-square-shadow" style="width:200px;height:75px" @click="signOut">SignOut!</button>
 </template>
 
 <script>
+import firebase from 'firebase'
 export default {
     name: "signout",
     data () {
@@ -11,10 +12,18 @@ export default {
     },
     methods: {
          signOut: function () {
-             this.$emit("signOut");
-             console.log('yobareteruyo!!')
-         }
-    },
+             //this.$emit("signOut");
+             firebase.auth().onAuthStateChanged((user) => {
+                 firebase.auth().signOut().then(() => {
+                     alert(user + ' : logout');
+                     this.$router.push('/signin');
+                     console.log('logouted');
+             }).catch( (error)=>{
+                     alert( error + ' : occur logout errer');
+             });
+             })
+        }
+    }
 }
 
 </script>
@@ -71,5 +80,21 @@ input {
   padding: 10px;
 }
 
+		.btn-square-shadow {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #5EBA83;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+}
+.btn-square-shadow:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  border-bottom: none;
+}
 
 </style>
