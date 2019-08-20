@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link v-if="userStatus" to="/">Home</router-link> |
+      <router-link to="/">Home</router-link> |
       <router-link to="/shopping">Shopping-Lists</router-link> |
       <router-link to="/signin">Signin</router-link> |
       <router-link to="/signup">Signup</router-link> |
@@ -13,42 +13,14 @@
 </template>
 
 <script>
-import firebase from 'firebase'
-
-/*
-function test() {
-		firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-                console.log('test login')
-                return true
-            } else {
-                console.log('test logout')
-                return false
-			}
-		})
-}*/
-
 
 export default {
     name: "statusCheck",
     data () {
             return {
-                //userStatus : this.statusCheck
-                userStatus: this.testCheck
             }
     },
     methods: {
-        statusCheck: function () {
-            firebase.auth().onAuthStateChanged(function(user) {
-                if (user) {
-                    console.log('login')
-                    return true
-                } else {
-                    console.log('logout')
-                    return false 
-                }
-            });
-		}
     },
     computed: {
     }
