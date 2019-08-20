@@ -7,7 +7,6 @@
       <router-link to="/signup">Signup</router-link> |
       <!-- <Signout @click="signOut">Signout</Signout> -->
       <router-link to="/signOut">Signout</router-link> |
-
     </div>
     <router-view/>
   </div>
@@ -34,7 +33,8 @@ export default {
     name: "statusCheck",
     data () {
             return {
-                userStatus : this.statusCheck
+                //userStatus : this.statusCheck
+                userStatus: this.testCheck
             }
     },
     methods: {
@@ -49,6 +49,8 @@ export default {
                 }
             });
 		}
+    },
+    computed: {
     }
 }
 
