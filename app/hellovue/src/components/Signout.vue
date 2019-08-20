@@ -1,9 +1,13 @@
 <template>
+    <div class="signout">
+      <h1>Logouted !!!</h1>
       <button class="btn-square-shadow" style="width:200px;height:75px" @click="signOut">SignOut!</button>
+    </div>
 </template>
 
 <script>
 import firebase from 'firebase'
+
 export default {
     name: "signout",
     data () {

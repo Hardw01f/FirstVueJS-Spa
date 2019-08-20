@@ -6,12 +6,27 @@
       <router-link to="/signin">Signin</router-link> |
       <router-link to="/signup">Signup</router-link> |
       <!-- <Signout @click="signOut">Signout</Signout> -->
-      <router-link to="/signOut">Signout</router-link>
-
+      <router-link to="/signOut">Signout</router-link> |
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+
+export default {
+    name: "statusCheck",
+    data () {
+            return {
+            }
+    },
+    methods: {
+    },
+    computed: {
+    }
+}
+
+</script>
 
 
 <style>
