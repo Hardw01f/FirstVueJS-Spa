@@ -7,7 +7,6 @@
           </label>
       </li>
   </ul>
-</div>
 
 
 </template>
