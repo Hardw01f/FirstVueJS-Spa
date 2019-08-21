@@ -1,1 +1,3 @@
 /app/hellovue/src/install-lists.txt
+/app/hellovue/*.json
+/app/firebase.json
