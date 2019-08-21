@@ -4,7 +4,7 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/shopping">Shopping-Lists</router-link> |
       <router-link to="/signin">Signin</router-link> |
-      <router-link to="/signup">Signup</router-link> |
+	  <!-- <router-link to="/signup">Signup</router-link> | -->
       <!-- <Signout @click="signOut">Signout</Signout> -->
       <router-link to="/signOut">Signout</router-link> |
     </div>
